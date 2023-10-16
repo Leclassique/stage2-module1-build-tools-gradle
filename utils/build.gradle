@@ -1,22 +1,27 @@
 plugins {
+    id 'java'
     // id for library
+    id 'maven-publish'
     // id for maven to publish jar to local repository
 }
 
 java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(19)
+    }
 // provide sourceCompatibility
 }
 
 repositories {
-// provide repository, where required dependencies are located
+    mavenCentral()
 }
 
 publishing {
     publications {
         maven(MavenPublication) {
-// provide groupId
-// provide artifactId
-// provide version
+            groupId = 'org.gradle.sample'
+            artifactId = 'gradle'
+            version = '1.0'
 
             from components.java
         }
@@ -24,10 +29,16 @@ publishing {
 }
 
 //add Apache Apache Commons Lang 3.10 (or higher) dependency
+dependencies {
+    implementation 'org.apache.commons:commons-lang3:3.5'
+    testImplementation('org.junit.jupiter:junit-jupiter:5.8.1')
+}
 
 jar {
     manifest {
         //provide manifest with such attributes as 'Implementation-Title', 'Implementation-Version'
+        attributes("Implementation-Title": "Gradle",
+                "Implementation-Version": archiveVersion)
     }
 }
 

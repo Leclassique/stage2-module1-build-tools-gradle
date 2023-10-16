@@ -1,4 +1,24 @@
 //add everything here
+plugins {
+    id 'java'
+    // id for library
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(19)
+    }
+// provide sourceCompatibility
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':utils')
+    testImplementation('org.junit.jupiter:junit-jupiter:5.8.1')
+}
 
 test {
     useJUnitPlatform()
