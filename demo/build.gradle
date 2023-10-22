@@ -1,15 +1,5 @@
-//add everything here
-plugins {
-    id 'java'
-    // id for library
-}
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(19)
-    }
-// provide sourceCompatibility
-}
+group = 'org.example'
+version = '1.0'
 
 repositories {
     mavenCentral()
@@ -17,7 +7,6 @@ repositories {
 
 dependencies {
     implementation project(':utils')
-    testImplementation('org.junit.jupiter:junit-jupiter:5.8.1')
 }
 
 test {
